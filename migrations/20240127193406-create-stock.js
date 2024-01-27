@@ -33,8 +33,8 @@ module.exports = {
       total: {
         type: Sequelize.INTEGER
       },
-      condition_bags: {
-        type: Sequelize.STRING
+      condition_bags_id: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
