@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasOne(models.Colie_type, {
+        foreignKey: "categorie_id",
+        onDelete:"CASCADE"
+      })
     }
   }
   Categorie.init({
