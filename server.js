@@ -56,6 +56,7 @@ app.engine(
 		},
 	}),
 );
+app.use(express.static("public"))
 app.set("view engine", ".hbs");
 app.set("views", __dirname + "/views");
 app.use(cookieParser());
@@ -87,6 +88,8 @@ app.use(async function (req, res, next) {
 		next(error);
 	}
 });
+
+app.use("/", require("./routes"));
 
 http.createServer(app).listen(4500, () => {
     console.log(`server run on port 4500`)
