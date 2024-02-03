@@ -12,11 +12,23 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      navire_id: {
-        type: Sequelize.INTEGER
+      navir_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Navir_id',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       colie_type_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Colie_types',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       qantity: {
         type: Sequelize.INTEGER

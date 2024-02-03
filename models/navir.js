@@ -11,7 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      
+      this.hasOne(models.Colie, {
+        foreignKey: "navir_id",
+        onDelete:"CASCADE"
+      })
     }
   }
   Navir.init({

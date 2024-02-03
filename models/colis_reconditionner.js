@@ -11,10 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Colie, {
+        foreignKey: "colie_id",
+        onDelete:"CASCADE"
+      })
     }
   }
   Colis_reconditionner.init({
-    colis_id: DataTypes.INTEGER,
+    colie_id: DataTypes.INTEGER,
     condition_bag_id: DataTypes.INTEGER,
     repackaged: DataTypes.INTEGER,
     loss: DataTypes.INTEGER,

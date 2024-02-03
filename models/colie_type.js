@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
 				foreignKey: "category_id",
 				onDelete:"CASCADE"
 			})
+			this.hasOne(models.Colie, {
+				foreignKey: "colie_type_id",
+				onDelete:"CASCADE"
+			})
 		}
 	}
 	Colie_type.init(

@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasOne(models.Stock, {
+        foreignKey: "condition_bags_id",
+        onDelete:"CASCADE"
+      })
     }
   }
   Condition_bags.init({

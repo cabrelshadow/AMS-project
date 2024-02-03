@@ -11,7 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      
+      this.hasMany(models.Sale_return, {
+        foreignKey: "sortie_magasin_id",
+        onDelete:"CASCADE"
+      })
+      this.hasMany(models.Sortie_magasin, {
+        foreignKey: "magasin_id",
+        onDelete:"CASCADE"
+      })
+      this.hasOne(models.Stock, {
+        foreignKey: "magasin_id",
+        onDelete:"CASCADE"
+      })
     }
   }
   Magasin.init({

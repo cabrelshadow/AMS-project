@@ -11,6 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Colie, {
+        foreignKey: "colis_id",
+        onDelete:"CASCADE"
+      })
+      this.belongsTo(models.Magasin, {
+        foreignKey: "magasin_id",
+        onDelete:"CASCADE"
+      })
+      this.belongsTo(models.Bon_livraison, {
+        foreignKey: "bon_livraison_id",
+        onDelete:"CASCADE"
+      })
+      this.belongsTo(models.Stock, {
+        foreignKey: "stock_id",
+        onDelete:"CASCADE"
+      })
+      
     }
   }
   Sortie_magasin.init({
@@ -20,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     delievery_qty: DataTypes.INTEGER,
     stock_id: DataTypes.INTEGER,
     swb: DataTypes.STRING,
-    mtn - t: DataTypes.STRING,
+    mtn_t: DataTypes.STRING,
     do: DataTypes.STRING
   }, {
     sequelize,

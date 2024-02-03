@@ -9,10 +9,18 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
-			this.belongsTo(models.Client, {
+			this.belongsTo(models.Clients, {
 				foreign_key: "client_id",
 				onDelete: "CASCADE",
 			});
+			this.belongsTo(models.Colie, {
+				foreignKey: "colis_id",
+				onDelete:"CASCADE"
+			})
+			this.hasMany(models.Sortie_magasin, {
+				foreignKey: "bon_livraison_id",
+				onDelete:"CASCADE"
+			})
 		}
 	}
 	Bon_livraison.init(
@@ -20,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 			code: DataTypes.STRING,
 			qty: DataTypes.INTEGER,
 			truck_number: DataTypes.STRING,
+			colis_id:DataTypes.INTEGER,
 			destination: DataTypes.STRING,
 			client_id: DataTypes.INTEGER,
 		},

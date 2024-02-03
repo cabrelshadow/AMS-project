@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Magasin, {
+        foreignKey: "sortie_magasin_id",
+        onDelete:"CASCADE"
+      })
     }
   }
   Sale_return.init({
