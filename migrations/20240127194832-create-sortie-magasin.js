@@ -30,7 +30,7 @@ module.exports = {
       bon_livraison_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Bon_livraison',
+          model: 'Bon_livraisons',
           key: 'id',
         },
         onUpdate: 'CASCADE',
