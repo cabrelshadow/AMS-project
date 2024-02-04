@@ -94,12 +94,8 @@ app.use(async function (req, res, next) {
 
 app.use("/", require("./routes"));
 app.use("/navir", require("./routes/navir"));
-
-app.use("/colie", require("./routes/colie"));
-
+app.use("/colis", require("./routes/colis"));
 app.use("/magasin", require("./routes/magasin"));
-
-app.use("/client", require("./routes/client"));
 
 http.createServer(app).listen(4500, () => {
     console.log(`server run on port 4500`)
