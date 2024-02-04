@@ -10,6 +10,9 @@ const Handlebars = require("handlebars");
 const {
 	allowInsecurePrototypeAccess,
 } = require("@handlebars/allow-prototype-access");
+
+app.use(express.json());
+app.use(express.urlencoded({extended:false}))
 app.engine(
 	".hbs",
 	expressHandlebars.engine({
@@ -90,6 +93,7 @@ app.use(async function (req, res, next) {
 });
 
 app.use("/", require("./routes"));
+app.use("/navir", require("./routes/navir"));
 
 http.createServer(app).listen(4500, () => {
     console.log(`server run on port 4500`)

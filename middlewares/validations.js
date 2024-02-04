@@ -5,7 +5,7 @@ function escapeHtml(unsafe) {
 
 function ValidateField(req, res, next) {
 	try {
-		const body = req.body;
+        const body = req.body??{};
 
 		// Vérifie si le corps de la requête est vide
 		if (Object.keys(body).length === 0) {
@@ -37,7 +37,7 @@ function ValidateField(req, res, next) {
 }
 function ValidateParams(req, res, next) {
 	try {
-		const body = req.params;
+		const body = req.params??{};
 		console.log(body);
 
 		// Vérifie si le corps de la requête est vide
