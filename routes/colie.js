@@ -5,10 +5,10 @@ const router = require("express").Router()
 
 
 router.get("/", async (req, res) => {
-    const colis = await db.Colie.findAll({ raw: true, include: ["Colie_type", "Categorie"] });
+    const colis = await db.Colie.findAll({ raw: true, include: ["Colie_type","Navir"] });
     const navirs = await db.Navir.findAll({ raw: true });
     const categories = await db.Categorie.findAll({raw:true})
-    return res.render("colis",{colis,navirs,categories})
+    return res.render("colie",{colis,navirs,categories})
 })
 
 .post("/add",ValidateField, async (req, res) => {

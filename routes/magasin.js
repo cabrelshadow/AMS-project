@@ -5,16 +5,22 @@ const router = require("express").Router()
 
 
 router.get("/", async (req, res) => {
-    const magasins = await db.Magasins.findAll({ raw: true });
-    return res.render("magasin",{magasins})
+    try {
+        const magasins = await db.Magasin.findAll({ raw: true });
+        return res.render("magasin",{magasins})
+    } catch (error) {
+       
+        return res.status(500).send("Internal server error");
+    }
 })
 
 .post("/add",ValidateField, async (req, res) => {
     try {
         const { location, name,weight } = req.body
-        await db.Magasins.create({ location, name, weight });
+        await db.Magasin.create({ location, name, weight });
         return res.redirect(req.headers.referer)
     } catch (error) {
+         console.log(error)
         return res.status(500).send("Internal server error");
     }
 })
@@ -23,7 +29,7 @@ router.get("/", async (req, res) => {
     try {
         const { location,name, weight } = req.body
         const {id} = req.params
-        await db.Magasins.update({ location,name, weight },{where:{id}});
+        await db.Magasin.update({ location,name, weight },{where:{id}});
         return res.redirect(req.headers.referer)
     } catch (error) {
         return res.status(500).send("Internal server error")
@@ -33,7 +39,7 @@ router.get("/", async (req, res) => {
 .get("/delete/:id", ValidateParams, async (req, res) => {
     try {
         const {id} = req.params
-        await db.Magasins.destroy({where:{id}});
+        await db.Magasin.destroy({where:{id}});
         return res.redirect(req.headers.referer)
     } catch (error) {
         return res.status(500).send("Internal server error")

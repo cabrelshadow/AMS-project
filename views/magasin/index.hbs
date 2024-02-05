@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShip">Créer un navir</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShip">Créer un magasin</button>
     </div>
     <div class="card-body">
         <table class="table table-bordered">
@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each navirs}}
+                {{#each magasins}}
                    <tr>
                     <td>{{name}}</td>
                     <td>{{weight}}</td>
@@ -20,7 +20,7 @@
                          <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editShip{{id}}">
                             <i class="align-middle" data-feather="edit"></i>
                         </button>
-                        <a href="/navir/delete/{{id}}" class="btn btn-sm btn-danger">
+                        <a href="/magasin/delete/{{id}}" class="btn btn-sm btn-danger">
                             <i class="align-middle" data-feather="trash-2"></i>
                         </a>
                     </td>
@@ -30,13 +30,13 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Editer un navir</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Editer un magasin</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/navir/edit/{{id}}" method="post">
+                        <form action="/magasin/edit/{{id}}" method="post">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nom</label>
                                 <input
@@ -48,14 +48,27 @@
                                     placeholder="{{name}}"
                                     value="{{name}}"
                                 />
-                                <small id="helpId" class="form-text text-muted">Nom du navir</small>
+                                <small id="helpId" class="form-text text-muted">Nom du magasin</small>
                             </div>
                             <div class="mb-3">
                                 <label for="weight" class="form-label">Capacité</label>
                                 <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="{{weight}}" value="{{weight}}" />
-                                <small id="helpId" class="form-text text-muted">Poids  du navir</small>
+                                <small id="helpId" class="form-text text-muted">Poids  du magasin</small>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Modifier les informations du navir</button>
+                            <div class="mb-3">
+                <label for="location" class="form-label">Localisation</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="location"
+                    id="location"
+                    aria-describedby="helpId"
+                    placeholder="{{location}}"
+                    value="{{location}}"
+                />
+                <small id="helpId" class="form-text text-muted">Localisation du magasin</small>
+            </div>
+                            <button type="submit" class="btn btn-primary w-100">Modifier les informations du magasin</button>
                             
                         </form>
                     </div>
@@ -80,7 +93,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/navir/add" method="post">
+        <form action="/magasin/add" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label">Nom</label>
                 <input
@@ -91,14 +104,26 @@
                     aria-describedby="helpId"
                     placeholder=""
                 />
-                <small id="helpId" class="form-text text-muted">Nom du navir</small>
+                <small id="helpId" class="form-text text-muted">Nom du magasin</small>
             </div>
             <div class="mb-3">
                 <label for="weight" class="form-label">Capacité</label>
                 <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="" />
-                <small id="helpId" class="form-text text-muted">Poids  du navir</small>
+                <small id="helpId" class="form-text text-muted">Capacité  du magasin</small>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Créer un navir</button>
+             <div class="mb-3">
+                <label for="location" class="form-label">Localisation</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="location"
+                    id="location"
+                    aria-describedby="helpId"
+                    placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted">Localisation du magasin</small>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Créer un magasin</button>
             
         </form>
       </div>
