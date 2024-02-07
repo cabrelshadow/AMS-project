@@ -100,7 +100,6 @@ app.use("/colie", require("./routes/colie"));
 app.use("/magasin", require("./routes/magasin"));
 
 app.use("/client", require("./routes/client"));
-app.use("/categorie", require("./routes/"));
 
 http.createServer(app).listen(4500, () => {
     console.log(`server run on port 4500`)
