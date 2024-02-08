@@ -11,8 +11,8 @@ router.get("/", async (req, res) => {
 
 router.post("/add",ValidateField, async (req, res) => {
     try {
-        const { name, fragile,categorie_id } = req.body
-        await db.Colie_type.create({ name, fragile,categorie_id });
+        const { name, fragile,category_id } = req.body
+        await db.Colie_type.create({ name, fragile,category_id });
         return res.redirect(req.headers.referer)
     } catch (error) {
         return res.status(500).send("Internal server error");

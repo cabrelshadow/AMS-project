@@ -19,8 +19,8 @@
                 {{#each colis}}
                    <tr>
                     <td>{{name}}</td>
-                    <td>{{"Categorie.name"}}</td>
-                    <td>{{"Colie_type.name"}}</td>
+                    <td>{{categorie}}</td>
+                    <td>{{colie_type}}</td>
                     <td>{{qantity}}</td>
                     
                     <td>
@@ -58,14 +58,14 @@
                                 <small id="helpId" class="form-text text-muted">Nom du colie</small>
                             </div>
                             <div class="mb-3">
-                                <label for="categorie_id" class="form-label">Categorie</label>
+                                <label for="colie_type_id" class="form-label">Type de colie</label>
                                 <select
                                     class="form-select"
-                                    name="categoriy_id"
-                                    id="categoriy_id"
+                                    name="colie_type_id"
+                                    id="colie_type_id"
                                     
                                 >
-                                    <option value="">Selectionner une catégorie</option>
+                                    <option value="">Selectionner le type de colie</option>
                                     {{#each ../colie_types}}
                                     <option value="{{id}}" {{#selected id ../colie_type_id}}
                                         selected
@@ -248,8 +248,8 @@
             <label for="categorie_id" class="form-label">Categorie</label>
             <select
                 class="form-select"
-                name="categoriy_id"
-                id="categoriy_id"
+                name="category_id"
+                id="category_id"
                 
             >
                 <option value="">Selectionner une catégorie</option>
