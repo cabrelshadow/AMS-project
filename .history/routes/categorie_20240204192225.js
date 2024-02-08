@@ -2,17 +2,7 @@ const { ValidateField, ValidateParams } = require("../middlewares/validations")
 const db = require("../models")
 const router = require("express").Router();
 
-
-router.get("/", async (req, res) => {
-    try {
-        const categories = await db.Categories.findAll({ raw: true });
-        return res.render("magasin",{categories})
-    } catch (error) {
-       
-        return res.status(500).send("Internal server error");
-    }
-})
-.post("/add",ValidateField, async (req, res) => {
+router.post("/add",ValidateField, async (req, res) => {
     try {
         const { name } = req.body
         await db.Categorie.create({ name });

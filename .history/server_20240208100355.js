@@ -101,9 +101,6 @@ app.use("/magasin", require("./routes/magasin"));
 
 app.use("/client", require("./routes/client"));
 
-//app.use("/categorie", require("./routes/categorie"));
-
-
 app.use("/categorie", require("./routes/categorie"));
 
 http.createServer(app).listen(4500, () => {
