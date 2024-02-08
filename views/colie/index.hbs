@@ -1,6 +1,7 @@
 <div class="card">
     <div class="card-header">
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addColie">Créer un colie</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addColieType">Créer un type de colie</button>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategorie">Créer une catégorie</button>
     </div>
     <div class="card-body">
@@ -20,7 +21,7 @@
                     <td>{{name}}</td>
                     <td>{{"Categorie.name"}}</td>
                     <td>{{"Colie_type.name"}}</td>
-                    <td>{{quantity}}</td>
+                    <td>{{qantity}}</td>
                     
                     <td>
                          <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editColie{{id}}">
@@ -42,7 +43,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/navir/edit/{{id}}" method="post">
+                        <form action="/colie/edit/{{id}}" method="post">
                              <div class="mb-3">
                                 <label for="name" class="form-label">Nom</label>
                                 <input
@@ -51,7 +52,8 @@
                                     name="name"
                                     id="name"
                                     aria-describedby="helpId"
-                                    placeholder=""
+                                    placeholder="{{name}}"
+                                    value="{{name}}"
                                 />
                                 <small id="helpId" class="form-text text-muted">Nom du colie</small>
                             </div>
@@ -59,14 +61,15 @@
                                 <label for="categorie_id" class="form-label">Categorie</label>
                                 <select
                                     class="form-select"
-                                    name="categorie_id"
-                                    id="categorie_id"
+                                    name="categoriy_id"
+                                    id="categoriy_id"
+                                    
                                 >
                                     <option value="">Selectionner une catégorie</option>
-                                    {{#each ../categories}}
-                                    <option value="{{id}}" {{#if id ../categorie_id}}
+                                    {{#each ../colie_types}}
+                                    <option value="{{id}}" {{#selected id ../colie_type_id}}
                                         selected
-                                    {{/if}} >{{name}}</option>
+                                    {{/selected}} >{{name}}</option>
                                     {{/each}}
                                     
                                 </select>
@@ -80,9 +83,9 @@
                                 >
                                     <option value="">Selectionner un navir</option>
                                     {{#each ../navirs}}
-                                    <option value="{{id}}" {{#if id ../navir_id}}
+                                    <option value="{{id}}" {{#selected id ../navir_id}}
                                         selected
-                                    {{/if}}>{{name}}</option>
+                                    {{/selected}}>{{name}}</option>
                                     {{/each}}
                                     
                                 </select>
@@ -90,7 +93,7 @@
                             
                             <div class="mb-3">
                                 <label for="weight" class="form-label">Quantité</label>
-                                <input type="text" class="form-control" name="quantity" id="quantity" aria-describedby="helpId" placeholder="" />
+                                <input type="text" class="form-control" name="qantity" id="quantity" aria-describedby="helpId" placeholder="{{qantity}}" value="{{qantity}}" />
                                 <small id="helpId" class="form-text text-muted"></small>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Modifier les informations du navir</button>
@@ -132,14 +135,14 @@
                 <small id="helpId" class="form-text text-muted">Nom du colie</small>
             </div>
             <div class="mb-3">
-                <label for="categorie_id" class="form-label">Categorie</label>
+                <label for="colie_type_id" class="form-label">Type de colis</label>
                 <select
                     class="form-select"
-                    name="categorie_id"
-                    id="categorie_id"
+                    name="colie_type_id"
+                    id="colie_type_id"
                 >
-                    <option value="">Selectionner une catégorie</option>
-                    {{#each categories}}
+                    <option value="">Selectionner</option>
+                    {{#each colie_types}}
                        <option value="{{id}}">{{name}}</option>
                     {{/each}}
                     
@@ -162,7 +165,7 @@
             
             <div class="mb-3">
                 <label for="weight" class="form-label">Quantité</label>
-                <input type="text" class="form-control" name="quantity" id="quantity" aria-describedby="helpId" placeholder="" />
+                <input type="text" class="form-control" name="qantity" id="quantity" aria-describedby="helpId" placeholder="" />
                 <small id="helpId" class="form-text text-muted"></small>
             </div>
             <button type="submit" class="btn btn-primary w-100">Créer un colie</button>
@@ -199,6 +202,66 @@
             <small id="helpId" class="form-text text-muted">Nom de la catégorie</small>
         </div>
         <button type="submit" class="btn btn-primary">Ajouter une catégorie</button>
+        </form>
+      </div>
+       
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addColieType" data-bs-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addColeTypeLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addColeTypeLabel">Ajouter un type de colie</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          
+
+        </button>
+      </div>
+      <div class="modal-body">
+       <form action="/colie-type/add" method="post">
+        <div class="mb-3">
+            <label for="" class="form-label">Nom</label>
+            <input
+                type="text"
+                class="form-control"
+                name="name"
+                id="name"
+                aria-describedby="helpId"
+                placeholder=""
+            />
+            <small id="helpId" class="form-text text-muted"></small>
+        </div>
+       
+        
+        <div class="form-check form-switch">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                id="is_fragile"
+                name="fragile"
+            />
+            <label class="form-check-label" for="is_fragile">C'est fragile?</label>
+        </div>
+         <div class="mb-3">
+            <label for="categorie_id" class="form-label">Categorie</label>
+            <select
+                class="form-select"
+                name="categoriy_id"
+                id="categoriy_id"
+                
+            >
+                <option value="">Selectionner une catégorie</option>
+                {{#each categories}}
+                <option value="{{id}}" {{#selected id ../category_id}}
+                    selected
+                {{/selected}} >{{name}}</option>
+                {{/each}}
+                
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>
       </div>
        
