@@ -101,7 +101,7 @@ app.use("/magasin", require("./routes/magasin"));
 
 app.use("/client", require("./routes/client"));
 
-//app.use("/categorie", require("./routes/categorie"));
+app.use("/colie-type", require("./routes/colie_type"));
 
 
 app.use("/categorie", require("./routes/categorie"));
