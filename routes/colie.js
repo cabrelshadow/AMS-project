@@ -6,14 +6,26 @@ const router = require("express").Router()
 
 router.get("/", async (req, res) => {
     try {
-        const colis = await db.Colie.findAll({ raw: true, include: ["Colie_type","Navir"] });
+        const colis =[]
+        const colies = await db.Colie.findAll({ raw: true, include: ["Colie_type","Navir"] });
         const navirs = await db.Navir.findAll({ raw: true });
-        const colie_types = await db.Colie_type.findAll({ raw: true })
+        const colie_types = await db.Colie_type.findAll({ raw: true,include:["Categorie"] })
         const categories = await db.Categorie.findAll({ raw: true })
+        for (const key in colies) {
+            if (Object.hasOwnProperty.call(colies, key)) {
+                const colie = colies[key];
+                const getColieType = colie_types.filter((ct) => ct.id === colie.colie_type_id);
+                colis.push({
+                    ...colie,
+                    colie_type: getColieType?.[0]?.name,
+                    fragile: getColieType?.[0]?.fragile ?? false,
+                    categorie:getColieType?.[0]?.["Categorie.name"]
+                })
+            }
+        }
         return res.render("colie", { colis, navirs, colie_types,categories })
-        
     } catch (error) {
-    
+        console.log(error)
         return res.status(500).send("internal server error")
     }
 })
