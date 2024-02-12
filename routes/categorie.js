@@ -5,8 +5,8 @@ const router = require("express").Router();
 
 router.get("/", async (req, res) => {
     try {
-        const categories = await db.Categories.findAll({ raw: true });
-        return res.render("magasin",{categories})
+        const categories = await db.Categorie.findAll({ raw: true });
+        return res.render("categorie",{categories})
     } catch (error) {
        
         return res.status(500).send("Internal server error");
