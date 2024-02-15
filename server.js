@@ -1,6 +1,6 @@
-const express = require("express")
-const app = express()
-const http = require("http")
+const express = require("express");
+const app = express();
+const http = require("http");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
@@ -12,7 +12,7 @@ const {
 } = require("@handlebars/allow-prototype-access");
 
 app.use(express.json());
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }));
 app.engine(
 	".hbs",
 	expressHandlebars.engine({
@@ -59,7 +59,7 @@ app.engine(
 		},
 	}),
 );
-app.use(express.static("public"))
+app.use(express.static("public"));
 app.set("view engine", ".hbs");
 app.set("views", __dirname + "/views");
 app.use(cookieParser());
@@ -69,7 +69,6 @@ app.use(
 		resave: true,
 		saveUninitialized: false,
 		maxAge: new Date(Date.now() + 3600000),
-		
 	}),
 );
 app.use(passport.initialize());
@@ -84,7 +83,7 @@ app.use((err, req, res, next) => {
 });
 
 app.use(async function (req, res, next) {
-	try {	
+	try {
 		res.locals.user = req.user || null;
 		next();
 	} catch (error) {
@@ -103,9 +102,9 @@ app.use("/client", require("./routes/client"));
 
 app.use("/colie-type", require("./routes/colie_type"));
 
-
+app.use("/auth", require("./routes/auth"));
 app.use("/categorie", require("./routes/categorie"));
 
 http.createServer(app).listen(4500, () => {
-    console.log(`server run on port 4500`)
-})
+	console.log(`server run on port 4500`);
+});
