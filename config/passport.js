@@ -14,40 +14,32 @@ function localAuth(passport) {
 					where: {
 						name: username,
 					},
-					include: ["Role"],
 					raw: true,
 				}).then(async (user) => {
 					//const getAdmin = await db.Role.findOne({ where: { name: "Admin" } });
 					console.log(user);
 					if (!user) {
 						console.log("No User Found");
-						
+
 						return done(null, false, {
 							message: "Nom d'utilisateur ou mot de passe incorrect",
 						});
 					}
-					if (user["Role.isAdmin"]) {
-						// Match password
-						bcrypt.compare(password, user.password, async (err, isMatch) => {
-							if (err) throw err;
 
-							if (isMatch) {
-								
-								return done(null, user);
-							} else {
-								//console.log("Incorrect");
-								
-								return done(null, false, {
-									message: "Nom d'utilisateur ou mot de passe incorrect",
-								});
-							}
-						});
-					} else {
-						
-						return done(null, false, {
-							message: "Non authorisé",
-						});
-					}
+					// Match password
+					bcrypt.compare(password, user.password, async (err, isMatch) => {
+						if (err) throw err;
+
+						if (isMatch) {
+							return done(null, user);
+						} else {
+							//console.log("Incorrect");
+
+							return done(null, false, {
+								message: "Nom d'utilisateur ou mot de passe incorrect",
+							});
+						}
+					});
 				});
 			},
 		),
@@ -86,16 +78,14 @@ function jwtAuth(passport) {
 				async (user, err) => {
 					if (err) {
 						console.log(err);
-						
+
 						return done(err, false);
 					}
 					if (user) {
 						process.nextTick(async () => {
-							
 							return done(null, user);
 						});
 					} else {
-						
 						return done(null, false);
 						// or you could create a new account
 					}
