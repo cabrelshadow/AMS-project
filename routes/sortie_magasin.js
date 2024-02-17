@@ -7,7 +7,10 @@ router.get("/", async (_, res) => {
 			include: ["Colie", "Magasin", "Stock"],
 			raw: true,
 		});
-		return res.render("sortie_magasin", { sorties });
+		const colies = await db.Colie.findAll({ raw: true });
+		const magasins = await db.Magasin.findAll({ raw: true });
+		const stocks = await db.Stock.findAll({ raw: true });
+		return res.render("sortie_magasin", { sorties, colies, magasins, stocks });
 	} catch (error) {
 		return res.status(500).send("Internal error");
 	}
