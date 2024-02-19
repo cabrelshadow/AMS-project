@@ -3,13 +3,17 @@ const db = require("../models");
 const { ValidateField, ValidateParams } = require("../middlewares/validations");
 router.get("/", async (_, res) => {
 	try {
-		const Colie_reconditionner = await db.Colie_reconditionner.findAll({
+		const Colie_reconditionner = await db.Colis_reconditionner.findAll({
 			include: ["Colie"],
 			raw: true,
 		});
 		const condition_bags = await db.Condition_bags.findAll({ raw: true });
-		return res.render("recondition", { Colie_reconditionner, condition_bags });
+		return res.render("reconditional_coli", {
+			Colie_reconditionner,
+			condition_bags,
+		});
 	} catch (error) {
+		console.log(error);
 		return res.status(500).send("Internal error");
 	}
 });
