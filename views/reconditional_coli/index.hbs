@@ -1,26 +1,29 @@
 <div class="card">
     <div class="card-header">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShip">Créer un navir</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShip">ajouter les reconditionner</button>
     </div>
     <div class="card-body">
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Nom du navire</th>
-                    <th scope="col">La capacité</th>
-                    <th scope="col"></th>
+                    <th scope="col">Nom du coli</th>
+                    <th scope="col">repackaged</th>
+                    <th scope="col">loss</th>
+                    <th scope="col">sweepy</th>
+                    <th scope="col">source</th>
                 </tr>
             </thead>
             <tbody>
-                {{#each navirs}}
+                {{#each Colie_reconditionner }}
                    <tr>
-                    <td>{{name}}</td>
-                    <td>{{weight}}</td>
+                    <td>{{loss}}</td>
+                    <td>{{sweepy}}</td>
+                    <td>{{source}}</td>
                     <td>
                          <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editShip{{id}}">
                             <i class="align-middle" data-feather="edit"></i>
                         </button>
-                        <a href="/navir/delete/{{id}}" class="btn btn-sm btn-danger">
+                        <a href="/colie_recondition/delete/{{id}}" class="btn btn-sm btn-danger">
                             <i class="align-middle" data-feather="trash-2"></i>
                         </a>
                     </td>
@@ -36,7 +39,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/navir/edit/{{id}}" method="post">
+                        <form action="/colie_recondition/edit/{{id}}" method="post">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nom</label>
                                 <input
@@ -55,7 +58,7 @@
                                 <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="{{weight}}" value="{{weight}}" />
                                 <small id="helpId" class="form-text text-muted">Poids  du navir</small>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Modifier les informations du navir</button>
+                            <button type="submit" class="btn btn-primary w-100">Modifier les informations du Colie</button>
                             
                         </form>
                     </div>
@@ -80,7 +83,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/navir/add" method="post">
+        <form action="/colie_recondition/add" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label">Nom</label>
                 <input
@@ -96,6 +99,8 @@
             <div class="mb-3">
                 <label for="weight" class="form-label">Capacité</label>
                 <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="" />
+                 <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="" />
+                  <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="" />
                 <small id="helpId" class="form-text text-muted">Poids  du navir</small>
             </div>
             <button type="submit" class="btn btn-primary w-100">Créer un navir</button>
