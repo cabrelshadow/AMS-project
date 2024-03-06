@@ -6,10 +6,8 @@
         <table class="table table-bordered" table-sort>
             <thead>
                 <tr>
-                    <th scope="col">Nom </th>
-                    <th scope="col">tel</th>
-                    <th scope="col">email</th>
-                    <th scope="col">location</th>
+                    <th scope="col">Nom  categorie</th>
+                 
                 </tr>
             </thead>
             <tbody>
@@ -37,7 +35,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/navir/edit/{{id}}" method="post">
+                        <form action="/categorie/edit/{{id}}" method="post">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nom</label>
                                 <input
@@ -49,13 +47,9 @@
                                     placeholder="{{name}}"
                                     value="{{name}}"
                                 />
-                                <small id="helpId" class="form-text text-muted">Nom du navir</small>
+                                <small id="helpId" class="form-text text-muted">Nom categorie</small>
                             </div>
-                            <div class="mb-3">
-                                <label for="weight" class="form-label">Capacité</label>
-                                <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="{{weight}}" value="{{weight}}" />
-                                <small id="helpId" class="form-text text-muted">Poids  du navir</small>
-                            </div>
+                       
                             <button type="submit" class="btn btn-primary w-100">Modifier les informations du navir</button>
                             
                         </form>
@@ -81,9 +75,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/navir/add" method="post">
+        <form action="/categorie/add" method="post">
             <div class="mb-3">
-                <label for="name" class="form-label">Nom</label>
+                <label for="name" class="form-label">Nom categorie</label>
                 <input
                     type="text"
                     class="form-control"
@@ -92,14 +86,10 @@
                     aria-describedby="helpId"
                     placeholder=""
                 />
-                <small id="helpId" class="form-text text-muted">Nom du navir</small>
+              
             </div>
-            <div class="mb-3">
-                <label for="weight" class="form-label">Capacité</label>
-                <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="" />
-                <small id="helpId" class="form-text text-muted">Poids  du navir</small>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Créer un navir</button>
+          
+            <button type="submit" class="btn btn-primary w-100">Ajouter une categorie</button>
             
         </form>
       </div>
