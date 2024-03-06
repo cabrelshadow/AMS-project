@@ -33,7 +33,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Editer un navir</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Editer un colis</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -77,7 +77,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Ajouter un navir</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Ajouter un colis reconditionner</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -85,7 +85,7 @@
       <div class="modal-body">
         <form action="/colie_recondition/add" method="post">
             <div class="mb-3">
-                <label for="name" class="form-label">Nom</label>
+                <label for="name" class="form-label">Nom colis</label>
                 <input
                     type="text"
                     class="form-control"
@@ -94,17 +94,58 @@
                     aria-describedby="helpId"
                     placeholder=""
                 />
-                <small id="helpId" class="form-text text-muted">Nom du navir</small>
+                <small id="helpId" class="form-text text-muted">Nom colis</small>
             </div>
-            <div class="mb-3">
-                <label for="weight" class="form-label">Capacité</label>
-                <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="" />
-                 <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="" />
-                  <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="" />
-                <small id="helpId" class="form-text text-muted">Poids  du navir</small>
+                <div class="mb-3">
+                <label for="name" class="form-label">repackaged</label>
+                <input
+                    type="tel"
+                    class="form-control"
+                    name="repackaged"
+                    id="contact"
+                    aria-describedby="helpId"
+                    placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted">repackaged</small>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Créer un navir</button>
-            
+                <div class="mb-3">
+                <label for="name" class="form-label">loss</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    name="loss"
+                    id="email"
+                    aria-describedby="helpId"
+                    placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted">loss</small>
+            </div>
+                <div class="mb-3">
+                <label for="name" class="form-label">sweepy</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="sweepy"
+                    id="location"
+                    aria-describedby="helpId"
+                    placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted">sweepy</small>
+            </div>
+               <div class="mb-3">
+                <label for="name" class="form-label">source</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="source"
+                    id="location"
+                    aria-describedby="helpId"
+                    placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted">source</small>
+            </div>
+         
+            <button type="submit" class="btn btn-primary w-100">ajouter</button>
         </form>
       </div>
        
