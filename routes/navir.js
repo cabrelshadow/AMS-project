@@ -10,8 +10,18 @@ router.get("/", async (req, res) => {
 })
 
 .post("/add",ValidateField, async (req, res) => {
+    
     try {
         const { name, weight } = req.body
+        const getnavir = await db.Navir.findOne({ where: { name } });
+        if (getnavir ) {
+            req.session.messages.push({
+                type: "danger",
+                msg: "ce navir existe deja",
+            });
+            return res.redirect(req.headers.referer);
+        }
+        
         await db.Navir.create({ name, weight });
         return res.redirect(req.headers.referer)
     } catch (error) {
