@@ -84,7 +84,9 @@ app.use((err, req, res, next) => {
 
 app.use(async function (req, res, next) {
 	try {
-		res.locals.user = req.user || null;
+		res.locals.user = req.user ?? null;
+		res.locals.messages = req.session.messages ?? [];
+		req.session.messages = [];
 		next();
 	} catch (error) {
 		next(error);
