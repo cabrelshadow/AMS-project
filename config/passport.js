@@ -12,7 +12,7 @@ function localAuth(passport) {
 				// Match user
 				db.User.findOne({
 					where: {
-						name: username,
+						username,
 					},
 					raw: true,
 				}).then(async (user) => {
