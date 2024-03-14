@@ -1,12 +1,19 @@
 <div class="card">
     <div class="card-header">
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShip">ajouter les reconditionner</button>
+        <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#add_recondition_bags"
+            >
+            ajouter les états de reconditionnement
+            </button>
     </div>
     <div class="card-body">
         <table class="table table-bordered" table-sort>
             <thead>
                 <tr>
-                    <th scope="col">Nom du coli</th>
+                    <th scope="col">Nom du colie</th>
                     <th scope="col">repackaged</th>
                     <th scope="col">loss</th>
                     <th scope="col">sweepy</th>
@@ -16,63 +23,75 @@
             <tbody>
                 {{#each Colie_reconditionner }}
                    <tr>
+                    <td>{{"Colie.name"}}</td>
+                    <td>{{repackaged}}</td>
                     <td>{{loss}}</td>
                     <td>{{sweepy}}</td>
                     <td>{{source}}</td>
-                    <td>
-                         <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editShip{{id}}">
-                            <i class="align-middle" data-feather="edit"></i>
-                        </button>
-                        <a href="/colie_recondition/delete/{{id}}" class="btn btn-sm btn-danger">
-                            <i class="align-middle" data-feather="trash-2"></i>
-                        </a>
-                    </td>
+                    
                 </tr>
 
-                <div class="modal fade modal-sm" id="editShip{{id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editShip{{id}}" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Editer un colis</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/colie_recondition/edit/{{id}}" method="post">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Nom</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    name="name"
-                                    id="name"
-                                    aria-describedby="helpId"
-                                    placeholder="{{name}}"
-                                    value="{{name}}"
-                                />
-                                <small id="helpId" class="form-text text-muted">Nom du navir</small>
-                            </div>
-                            <div class="mb-3">
-                                <label for="weight" class="form-label">Capacité</label>
-                                <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="{{weight}}" value="{{weight}}" />
-                                <small id="helpId" class="form-text text-muted">Poids  du navir</small>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Modifier les informations du Colie</button>
-                            
-                        </form>
-                    </div>
-                    
-                    </div>
-                </div>
-                </div>
+                
 
                 {{/each}}
             </tbody>
         </table>
     </div>
 </div>
-
+<div
+  class="modal fade modal-sm"
+  id="add_recondition_bags"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="add_recondition_bags"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Etat de reconditionnement
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">
+            &times;
+          </span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/recondition/condition/add" method="post">
+          <div class="mb-3">
+            <label for="name" class="form-label">
+              Nom
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              name="label"
+              id="name"
+              aria-describedby="helpId"
+              placeholder=""
+              value=""
+            />
+            <small id="helpId" class="form-text text-muted">
+            
+            </small>
+          </div>
+          
+          <button type="submit" class="btn btn-primary w-100">
+            Ajouter
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="modal fade modal-sm" id="addShip" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addShip" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -83,62 +102,82 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/colie_recondition/add" method="post">
-            <div class="mb-3">
-                <label for="name" class="form-label">Nom colis</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    name="name"
-                    id="name"
-                    aria-describedby="helpId"
-                    placeholder=""
-                />
-                <small id="helpId" class="form-text text-muted">Nom colis</small>
-            </div>
+        <form action="/recondition/add" method="post">
+        <div class="mb-3">
+            <label for="id_colie" class="form-label">Selectionner le colie</label>
+            <select
+                class="form-select form-select-lg"
+                name="colis_id"
+                id="id_colie"
+            >
+                <option value="" selected >Selectionner le colie</option>
+                {{#each colies}}
+                   <option value="{{id}}">
+                        {{name}}
+                    </option>
+                {{/each}}
+               
+            </select>
+        </div>
+        <div class="mb-3">
+  <label for="id_colie" class="form-label">
+    Etat de reconditionnement
+  </label>
+  <select class="form-select form-select-lg" name="id_colie" id="id_colie">
+    <option value="" selected>
+      Selectionner 
+    </option>
+    {{#each condition_bags}}
+      <option value="{{id}}">
+        {{label}}
+      </option>
+    {{/each}}
+  </select>
+</div>
+        
                 <div class="mb-3">
-                <label for="name" class="form-label">repackaged</label>
+                <label for="repackaged" class="form-label">repackaged</label>
                 <input
-                    type="tel"
+                    type="number"
                     class="form-control"
                     name="repackaged"
-                    id="contact"
+                    id="repackaged"
                     aria-describedby="helpId"
                     placeholder=""
                 />
                 <small id="helpId" class="form-text text-muted">repackaged</small>
             </div>
                 <div class="mb-3">
-                <label for="name" class="form-label">loss</label>
+                <label for="loss" class="form-label">loss</label>
                 <input
-                    type="email"
+                    type="number"
                     class="form-control"
                     name="loss"
-                    id="email"
+                    id="loss"
                     aria-describedby="helpId"
                     placeholder=""
                 />
                 <small id="helpId" class="form-text text-muted">loss</small>
             </div>
                 <div class="mb-3">
-                <label for="name" class="form-label">sweepy</label>
+                <label for="sweepy" class="form-label">sweepy</label>
                 <input
-                    type="text"
+                    type="number"
                     class="form-control"
                     name="sweepy"
-                    id="location"
+                    id="sweepy"
                     aria-describedby="helpId"
                     placeholder=""
                 />
                 <small id="helpId" class="form-text text-muted">sweepy</small>
             </div>
                <div class="mb-3">
-                <label for="name" class="form-label">source</label>
+                <label for="source" class="form-label">source</label>
                 <input
                     type="text"
                     class="form-control"
                     name="source"
-                    id="location"
+                    id="source"
                     aria-describedby="helpId"
                     placeholder=""
                 />
