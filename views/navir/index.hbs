@@ -1,6 +1,6 @@
 <div class="card p-5">
     <div class="card-header">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShip">Créer un navir</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShip">Créer un navire</button>
     </div>
     <div class="card-body">
                {{#each messages}}
@@ -38,7 +38,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Editer un navir</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Editer un navire</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -56,14 +56,14 @@
                                     placeholder="{{name}}"
                                     value="{{name}}"
                                 />
-                                <small id="helpId" class="form-text text-muted">Nom du navir</small>
+                                <small id="helpId" class="form-text text-muted">Nom du navire</small>
                             </div>
                             <div class="mb-3">
                                 <label for="weight" class="form-label">Capacité</label>
                                 <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="{{weight}}" value="{{weight}}" />
-                                <small id="helpId" class="form-text text-muted">Poids  du navir</small>
+                                <small id="helpId" class="form-text text-muted">Poids  du naviree</small>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Modifier les informations du navir</button>
+                            <button type="submit" class="btn btn-primary w-100">Modifier les informations du naviree</button>
                             
                         </form>
                     </div>
@@ -82,7 +82,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Ajouter un navir</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Ajouter un navire</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -99,14 +99,14 @@
                     aria-describedby="helpId"
                     placeholder=""
                 />
-                <small id="helpId" class="form-text text-muted">Nom du navir</small>
+                <small id="helpId" class="form-text text-muted">Nom du navire</small>
             </div>
             <div class="mb-3">
                 <label for="weight" class="form-label">Capacité</label>
                 <input type="text" class="form-control" name="weight" id="weight" aria-describedby="helpId" placeholder="" />
-                <small id="helpId" class="form-text text-muted">Poids  du navir</small>
+                <small id="helpId" class="form-text text-muted">Poids  du navire</small>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Créer un navir</button>
+            <button type="submit" class="btn btn-primary w-100">Créer un navire</button>
             
         </form>
       </div>

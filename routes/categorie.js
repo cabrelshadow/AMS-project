@@ -15,6 +15,21 @@ router
 	.post("/add", ensureAuthenticated, ValidateField, async (req, res) => {
 		try {
 			const { name } = req.body;
+			const getCategorie = await db.Categorie.findOne({ where: { name } });
+			if (getCategorie) {
+				req.session.messages.push({
+					type: "danger",
+					msg: "cette categorie existe deja",
+				});
+				return res.redirect(req.headers.referer);
+			}else{
+				req.session.messages.push({
+					type: "success",
+					msg: "categorie créer avec success",
+				});
+				
+			}
+
 			await db.Categorie.create({ name });
 			return res.redirect(req.headers.referer);
 		} catch (error) {

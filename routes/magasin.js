@@ -17,6 +17,20 @@ router
 	.post("/add", ValidateField, ensureAuthenticated, async (req, res) => {
 		try {
 			const { location, name, weight } = req.body;
+			const getMagasin=await db.Magasin.findOne({where:{name}});
+			if(getMagasin){
+				req.session.messages.push({
+					type: "danger",
+					msg: "ce magasin existe deja",
+				});
+				return res.redirect(req.headers.referer);
+			}else{
+				req.session.messages.push({
+					type: "success",
+					msg: "magasin creer avec success",
+				});
+				
+			}
 			await db.Magasin.create({ location, name, weight });
 			return res.redirect(req.headers.referer);
 		} catch (error) {

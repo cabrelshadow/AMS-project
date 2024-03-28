@@ -1,0 +1,195 @@
+<div class="card">
+    <div class="card-header">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShip">ajouter les reconditionner</button>
+        <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#add_recondition_bags"
+            >
+            ajouter un retrait de colie
+            </button>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" table-sort>
+            <thead>
+                <tr>
+                    <th scope="col">Nom du colie</th>
+                    <th scope="col">repackaged</th>
+                    <th scope="col">loss</th>
+                    <th scope="col">sweepy</th>
+                    <th scope="col">source</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each Colie_reconditionner }}
+                   <tr>
+                    <td>{{"Colie.name"}}</td>
+                    <td>{{repackaged}}</td>
+                    <td>{{loss}}</td>
+                    <td>{{sweepy}}</td>
+                    <td>{{source}}</td>
+                    
+                </tr>
+
+                
+
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div
+  class="modal fade modal-sm"
+  id="add_recondition_bags"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="add_recondition_bags"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Etat de reconditionnement
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">
+            &times;
+          </span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/recondition/condition/add" method="post">
+          <div class="mb-3">
+            <label for="name" class="form-label">
+              Nom
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              name="label"
+              id="name"
+              aria-describedby="helpId"
+              placeholder=""
+              value=""
+            />
+            <small id="helpId" class="form-text text-muted">
+            
+            </small>
+          </div>
+          
+          <button type="submit" class="btn btn-primary w-100">
+            Ajouter
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade modal-sm" id="addShip" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addShip" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Ajouter un colis reconditionner</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/recondition/add" method="post">
+        <div class="mb-3">
+            <label for="id_colie" class="form-label">Selectionner le colie</label>
+            <select
+                class="form-select form-select-lg"
+                name="colis_id"
+                id="id_colie"
+            >
+                <option value="" selected >Selectionner le colie</option>
+                {{#each colies}}
+                   <option value="{{id}}">
+                        {{name}}
+                    </option>
+                {{/each}}
+               
+            </select>
+        </div>
+        <div class="mb-3">
+  <label for="id_colie" class="form-label">
+    Etat de reconditionnement
+  </label>
+  <select class="form-select form-select-lg" name="id_colie" id="id_colie">
+    <option value="" selected>
+      Selectionner 
+    </option>
+    {{#each condition_bags}}
+      <option value="{{id}}">
+        {{label}}
+      </option>
+    {{/each}}
+  </select>
+</div>
+        
+                <div class="mb-3">
+                <label for="repackaged" class="form-label">repackaged</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    name="repackaged"
+                    id="repackaged"
+                    aria-describedby="helpId"
+                    placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted">repackaged</small>
+            </div>
+                <div class="mb-3">
+                <label for="loss" class="form-label">loss</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    name="loss"
+                    id="loss"
+                    aria-describedby="helpId"
+                    placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted">loss</small>
+            </div>
+                <div class="mb-3">
+                <label for="sweepy" class="form-label">sweepy</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    name="sweepy"
+                    id="sweepy"
+                    aria-describedby="helpId"
+                    placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted">sweepy</small>
+            </div>
+               <div class="mb-3">
+                <label for="source" class="form-label">source</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="source"
+                    id="source"
+                    aria-describedby="helpId"
+                    placeholder=""
+                />
+                <small id="helpId" class="form-text text-muted">source</small>
+            </div>
+         
+            <button type="submit" class="btn btn-primary w-100">ajouter</button>
+        </form>
+      </div>
+       
+    </div>
+  </div>
+</div>
+
+

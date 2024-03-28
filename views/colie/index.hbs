@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addColie">Créer un colie</button>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addColieType">Créer un type de colie</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addColie">Créer un colis</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addColieType">Créer un type de colis</button>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategorie">Créer une catégorie</button>
     </div>
     <div class="card-body">
@@ -10,7 +10,7 @@
                 <tr>
                     <th scope="col">Nom du colie</th>
                     <th scope="col">Categorie</th>
-                    <th scope="col">Colie_type</th>
+                    <th scope="col">Colis_type</th>
                     <th scope="col">Quantité</th>
                     <th></th>
                 </tr>
@@ -27,7 +27,7 @@
                          <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editColie{{id}}">
                             <i class="align-middle" data-feather="edit"></i>
                         </button>
-                        <a href="/navir/delete/{{id}}" class="btn btn-sm btn-danger">
+                        <a href="/colis/delete/{{id}}" class="btn btn-sm btn-danger">
                             <i class="align-middle" data-feather="trash-2"></i>
                         </a>
                     </td>
@@ -55,17 +55,17 @@
                                     placeholder="{{name}}"
                                     value="{{name}}"
                                 />
-                                <small id="helpId" class="form-text text-muted">Nom du colie</small>
+                                <small id="helpId" class="form-text text-muted">Nom du colis</small>
                             </div>
                             <div class="mb-3">
-                                <label for="colie_type_id" class="form-label">Type de colie</label>
+                                <label for="colie_type_id" class="form-label">Type de colis</label>
                                 <select
                                     class="form-select"
                                     name="colie_type_id"
                                     id="colie_type_id"
                                     
                                 >
-                                    <option value="">Selectionner le type de colie</option>
+                                    <option value="">Selectionner le type de colis</option>
                                     {{#each ../colie_types}}
                                     <option value="{{id}}" {{#selected id ../colie_type_id}}
                                         selected
@@ -115,7 +115,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Ajouter un colie</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Ajouter un colis</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -132,7 +132,7 @@
                     aria-describedby="helpId"
                     placeholder=""
                 />
-                <small id="helpId" class="form-text text-muted">Nom du colie</small>
+                <small id="helpId" class="form-text text-muted">Nom du colis</small>
             </div>
             <div class="mb-3">
                 <label for="colie_type_id" class="form-label">Type de colis</label>
@@ -142,7 +142,7 @@
                     id="colie_type_id"
                 >
                     <option value="">Selectionner</option>
-                    {{#each colie_types}}
+                    {{#each colis_types}}
                        <option value="{{id}}">{{name}}</option>
                     {{/each}}
                     
@@ -155,7 +155,7 @@
                     name="navir_id"
                     id="navir_id"
                 >
-                    <option value="">Selectionner un navir</option>
+                    <option value="">Selectionner un navire</option>
                     {{#each navirs}}
                        <option value="{{id}}">{{name}}</option>
                     {{/each}}
@@ -168,7 +168,7 @@
                 <input type="text" class="form-control" name="qantity" id="quantity" aria-describedby="helpId" placeholder="" />
                 <small id="helpId" class="form-text text-muted"></small>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Créer un colie</button>
+            <button type="submit" class="btn btn-primary w-100">Créer un colis</button>
             
         </form>
       </div>
@@ -213,14 +213,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addColeTypeLabel">Ajouter un type de colie</h5>
+        <h5 class="modal-title" id="addColeTypeLabel">Ajouter un type de colis</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
           
 
         </button>
       </div>
       <div class="modal-body">
-       <form action="/colie-type/add" method="post">
+       <form action="/colis-type/add" method="post">
         <div class="mb-3">
             <label for="" class="form-label">Nom</label>
             <input

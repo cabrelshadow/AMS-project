@@ -20,6 +20,12 @@ router
 					msg: "ce navir existe deja",
 				});
 				return res.redirect(req.headers.referer);
+			}else{
+				req.session.messages.push({
+					type: "success",
+					msg: "navire creer avec success",
+				});
+				
 			}
 
 			await db.Navir.create({ name, weight });

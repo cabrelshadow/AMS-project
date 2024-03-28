@@ -107,6 +107,7 @@ app.use("/colie-type", require("./routes/colie_type"));
 app.use("/auth", require("./routes/auth"));
 app.use("/categorie", require("./routes/categorie"));
 app.use("/recondition", require("./routes/colie_recondition"));
+app.use("/sortie_magasin", require("./routes/sortie_magasin"));
 
 http.createServer(app).listen(4500, () => {
 	console.log(`server run on port 4500`);
