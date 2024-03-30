@@ -14,21 +14,26 @@
             <thead>
                 <tr>
                     <th scope="col">Nom du colie</th>
-                    <th scope="col">repackaged</th>
-                    <th scope="col">loss</th>
-                    <th scope="col">sweepy</th>
-                    <th scope="col">source</th>
+                    <th scope="col">Magasin</th>
+                    <th scope="col">bon de liraison</th>
+                    <th scope="col">quantité livré</th>
+                    <th scope="col">stock</th>
+                    <th scope="col">swb</th>
+                    <th scope="col">mtn_t</th>
+                    <th scope="col">do</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each Colie_reconditionner }}
                    <tr>
                     <td>{{"Colie.name"}}</td>
-                    <td>{{repackaged}}</td>
-                    <td>{{loss}}</td>
-                    <td>{{sweepy}}</td>
-                    <td>{{source}}</td>
-                    
+                    <td>{{Magasin}}</td>
+                    <td>{{bon_livraison}}</td>
+                    <td>{{delivery_qty}}</td>
+                    <td>{{stock}}</td>
+                    <td>{{swb}}</td>
+                    <td>{{mtn_t}}</td>
+                    <td>{{do}}</td>
                 </tr>
 
                 

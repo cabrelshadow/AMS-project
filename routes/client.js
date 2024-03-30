@@ -13,6 +13,21 @@ router
 	.post("/add", ValidateField, ensureAuthenticated, async (req, res) => {
 		try {
 			const { name, contact, email, location } = req.body;
+			const getClienSB = await db.Clients.findOne({ where: { contact } });
+			if (getClienSB ) {
+				req.session.messages.push({
+					type: "danger",
+					msg: "ce numero(SB) existe deja",
+				});
+				return res.redirect(req.headers.referer);
+			}else{
+				req.session.messages.push({
+					type: "success",
+					msg: "client  ajouter avec success",
+				});
+				
+			}
+
 			await db.Clients.create({ name, contact, email, location });
 			return res.redirect(req.headers.referer);
 		} catch (error) {
