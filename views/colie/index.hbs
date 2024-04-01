@@ -142,7 +142,7 @@
                     id="colie_type_id"
                 >
                     <option value="">Selectionner</option>
-                    {{#each colis_types}}
+                    {{#each colie_types}}
                        <option value="{{id}}">{{name}}</option>
                     {{/each}}
                     
@@ -220,7 +220,7 @@
         </button>
       </div>
       <div class="modal-body">
-       <form action="/colis-type/add" method="post">
+       <form action="/colie-type/add" method="post">
         <div class="mb-3">
             <label for="" class="form-label">Nom</label>
             <input
