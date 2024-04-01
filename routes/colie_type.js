@@ -6,7 +6,7 @@ const router = require("express").Router();
 
 router.get("/", ensureAuthenticated, async (req, res) => {
 	const colie_type = await db.Colie_type.findAll({ raw: true });
-	return res.render("navir", { colie_type });
+	return res.render("colie", { colie_type });
 });
 
 router
